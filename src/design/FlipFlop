@@ -1,0 +1,11 @@
+module FlipFlop(D,clk,Q);
+input D; // Dato de entrada
+input clk; // entrada de reloj 
+output Q; // salida Q 
+always @(posedge clk) 
+begin
+ Q <= D; 
+end 
+endmodule
+// Sacado de: 
+// https://www.fpga4student.com/2017/02/verilog-code-for-d-flip-flop.html

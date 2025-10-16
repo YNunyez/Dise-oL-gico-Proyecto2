@@ -1,5 +1,5 @@
 $date
-	Wed Oct 15 11:13:58 2025
+	Wed Oct 15 12:47:09 2025
 $end
 $version
 	Icarus Verilog
@@ -33,7 +33,7 @@ $var reg 1 4 press_pending $end
 $var reg 4 5 pressed_col_oh [3:0] $end
 $var reg 4 6 pressed_row_oh [3:0] $end
 $var reg 32 7 confirm_count [31:0] $end
-$scope module my_barrido $end
+$scope module barrido $end
 $var wire 1 $ clk $end
 $var wire 4 8 col [3:0] $end
 $var parameter 1 9 ACTIVE_LOW $end

@@ -1,3 +1,19 @@
+IO_LOC  "fil[3]" 77;
+
+IO_LOC  "fil[2]" 76;
+
+IO_LOC  "fil[1]" 75;
+
+IO_LOC  "fil[0]" 74;
+
+IO_LOC  "col[3]" 73;
+
+IO_LOC  "col[2]" 72;
+
+IO_LOC  "col[1]" 71;
+
+IO_LOC  "col[0]" 70;
+
 IO_LOC  "clk" 52;
 IO_PORT "clk" IO_TYPE=LVCMOS33 PULL_MODE=UP;
 

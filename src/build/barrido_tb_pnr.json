@@ -1,0 +1,491 @@
+{
+  "creator": "Next Generation Place and Route (Version nextpnr-0.5-34-ga93f49eb)",
+  "modules": {
+    "top": {
+      "settings": {
+        "route": "00000000000000000000000000000001",
+        "router/tmg_ripup": "0 ",
+        "router1/useEstimate": "1 ",
+        "router1/fullCleanupReroute": "1 ",
+        "router1/cleanupReroute": "1 ",
+        "router1/maxIterCnt": "200",
+        "place": "00000000000000000000000000000001",
+        "placer1/startTemp": "1.000000",
+        "placer1/budgetBased": "0 ",
+        "placer1/minBelsForGridPick": "64",
+        "placer1/netShareWeight": "0.000000",
+        "placer1/constraintWeight": "10.000000",
+        "placerHeap/cellPlacementTimeout": "8",
+        "placerHeap/netShareWeight": "0.000000",
+        "placerHeap/parallelRefine": "0 ",
+        "pack": "00000000000000000000000000000001",
+        "cst": "00000000000000000000000000000001",
+        "synth": "00000000000000000000000000000001",
+        "placerHeap/timingWeight": "10 ",
+        "placerHeap/criticalityExponent": "2",
+        "placerHeap/beta": "0.900000",
+        "placerHeap/alpha": "0.100000",
+        "seed": "01010011010110001001011110010011",
+        "arch.type": "none",
+        "arch.name": "ARCHNAME",
+        "router": "router1",
+        "placer": "heap",
+        "auto_freq": "00000000000000000000000000000000",
+        "slack_redist_iter": "00000000000000000000000000000000",
+        "timing_driven": "00000000000000000000000000000001",
+        "target_freq": "27000000.000000",
+        "arch.enable-auto-longwires": "00000000000000000000000000000000",
+        "arch.enable-globals": "00000000000000000000000000000001"
+      },
+      "attributes": {
+        "top": "00000000000000000000000000000001",
+        "src": "../design/barrido.sv:1.1-34.10",
+        "dynports": "00000000000000000000000000000001"
+      },
+      "ports": {
+        "col": {
+          "direction": "output",
+          "bits": [ 3877486, 3877483, 3877480, 3877477 ]
+        },
+        "clk": {
+          "direction": "input",
+          "bits": [ 3877461 ]
+        }
+      },
+      "cells": {
+        "col_reg_DFFE_Q_2_DFFLC": {
+          "hide_name": 0,
+          "type": "SLICE",
+          "parameters": {
+            "FF_TYPE": "DFFE",
+            "FF_USED": "00000000000000000000000000000001",
+            "INIT": "1010101010101010"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "R14C2_SLICE3",
+            "always_ff": "00000000000000000000000000000001",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "../design/barrido.sv:20.5-29.8|d:\\oss-cad-suite\\bin\\../share/yosys/gowin/cells_map.v:19.7-19.56"
+          },
+          "port_directions": {
+            "LSR": "input",
+            "CE": "input",
+            "Q": "output",
+            "F": "output",
+            "CLK": "input",
+            "D": "input",
+            "C": "input",
+            "B": "input",
+            "A": "input"
+          },
+          "connections": {
+            "LSR": [  ],
+            "CE": [ 3877471 ],
+            "Q": [ 3877482 ],
+            "F": [  ],
+            "CLK": [ 3877467 ],
+            "D": [  ],
+            "C": [  ],
+            "B": [  ],
+            "A": [ 3877485 ]
+          }
+        },
+        "col_reg_DFFSE_Q_DFFLC": {
+          "hide_name": 0,
+          "type": "SLICE",
+          "parameters": {
+            "FF_TYPE": "DFFSE",
+            "FF_USED": "00000000000000000000000000000001",
+            "INIT": "1010101010101010"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "R14C2_SLICE0",
+            "always_ff": "00000000000000000000000000000001",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "../design/barrido.sv:20.5-29.8|d:\\oss-cad-suite\\bin\\../share/yosys/gowin/cells_map.v:67.8-67.66"
+          },
+          "port_directions": {
+            "LSR": "input",
+            "CE": "input",
+            "Q": "output",
+            "F": "output",
+            "CLK": "input",
+            "D": "input",
+            "C": "input",
+            "B": "input",
+            "A": "input"
+          },
+          "connections": {
+            "LSR": [ 3877509 ],
+            "CE": [ 3877471 ],
+            "Q": [ 3877485 ],
+            "F": [  ],
+            "CLK": [ 3877467 ],
+            "D": [  ],
+            "C": [  ],
+            "B": [  ],
+            "A": [ 3877476 ]
+          }
+        },
+        "col_reg_DFFE_Q_DFFLC": {
+          "hide_name": 0,
+          "type": "SLICE",
+          "parameters": {
+            "FF_TYPE": "DFFE",
+            "FF_USED": "00000000000000000000000000000001",
+            "INIT": "1010101010101010"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "R14C2_SLICE2",
+            "always_ff": "00000000000000000000000000000001",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "../design/barrido.sv:20.5-29.8|d:\\oss-cad-suite\\bin\\../share/yosys/gowin/cells_map.v:19.7-19.56"
+          },
+          "port_directions": {
+            "LSR": "input",
+            "CE": "input",
+            "Q": "output",
+            "F": "output",
+            "CLK": "input",
+            "D": "input",
+            "C": "input",
+            "B": "input",
+            "A": "input"
+          },
+          "connections": {
+            "LSR": [  ],
+            "CE": [ 3877471 ],
+            "Q": [ 3877476 ],
+            "F": [  ],
+            "CLK": [ 3877467 ],
+            "D": [  ],
+            "C": [  ],
+            "B": [  ],
+            "A": [ 3877479 ]
+          }
+        },
+        "col_reg_DFFE_Q_1_DFFLC": {
+          "hide_name": 0,
+          "type": "SLICE",
+          "parameters": {
+            "FF_TYPE": "DFFE",
+            "FF_USED": "00000000000000000000000000000001",
+            "INIT": "1010101010101010"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "R14C2_SLICE5",
+            "always_ff": "00000000000000000000000000000001",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "../design/barrido.sv:20.5-29.8|d:\\oss-cad-suite\\bin\\../share/yosys/gowin/cells_map.v:19.7-19.56"
+          },
+          "port_directions": {
+            "LSR": "input",
+            "CE": "input",
+            "Q": "output",
+            "F": "output",
+            "CLK": "input",
+            "D": "input",
+            "C": "input",
+            "B": "input",
+            "A": "input"
+          },
+          "connections": {
+            "LSR": [  ],
+            "CE": [ 3877471 ],
+            "Q": [ 3877479 ],
+            "F": [  ],
+            "CLK": [ 3877467 ],
+            "D": [  ],
+            "C": [  ],
+            "B": [  ],
+            "A": [ 3877482 ]
+          }
+        },
+        "col_OBUF_O_3$iob": {
+          "hide_name": 0,
+          "type": "IOB",
+          "parameters": {
+            "ENABLE_USED": "00000000000000000000000000000000",
+            "OUTPUT_USED": "00000000000000000000000000000001",
+            "INPUT_USED": "00000000000000000000000000000000"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "R15C1_IOBA",
+            "src": "../design/barrido.sv:10.30-10.33"
+          },
+          "port_directions": {
+            "O": "output",
+            "OEN": "input",
+            "I": "input",
+            "PAD": "inout"
+          },
+          "connections": {
+            "O": [  ],
+            "OEN": [  ],
+            "I": [ 3877485 ],
+            "PAD": [  ]
+          }
+        },
+        "col_OBUF_O_2$iob": {
+          "hide_name": 0,
+          "type": "IOB",
+          "parameters": {
+            "ENABLE_USED": "00000000000000000000000000000000",
+            "OUTPUT_USED": "00000000000000000000000000000001",
+            "INPUT_USED": "00000000000000000000000000000000"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "R13C1_IOBA",
+            "src": "../design/barrido.sv:10.30-10.33"
+          },
+          "port_directions": {
+            "O": "output",
+            "OEN": "input",
+            "I": "input",
+            "PAD": "inout"
+          },
+          "connections": {
+            "O": [  ],
+            "OEN": [  ],
+            "I": [ 3877482 ],
+            "PAD": [  ]
+          }
+        },
+        "col_OBUF_O_1$iob": {
+          "hide_name": 0,
+          "type": "IOB",
+          "parameters": {
+            "ENABLE_USED": "00000000000000000000000000000000",
+            "OUTPUT_USED": "00000000000000000000000000000001",
+            "INPUT_USED": "00000000000000000000000000000000"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "R14C1_IOBA",
+            "src": "../design/barrido.sv:10.30-10.33"
+          },
+          "port_directions": {
+            "O": "output",
+            "OEN": "input",
+            "I": "input",
+            "PAD": "inout"
+          },
+          "connections": {
+            "O": [  ],
+            "OEN": [  ],
+            "I": [ 3877479 ],
+            "PAD": [  ]
+          }
+        },
+        "$PACKER_VCC": {
+          "hide_name": 1,
+          "type": "VCC",
+          "parameters": {
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "VCC"
+          },
+          "port_directions": {
+            "V": "output"
+          },
+          "connections": {
+            "V": [ 3877511 ]
+          }
+        },
+        "clockCounter_DFFR_Q_D_LUT1_F_LC": {
+          "hide_name": 0,
+          "type": "SLICE",
+          "parameters": {
+            "FF_TYPE": "DFFR",
+            "FF_USED": "00000000000000000000000000000001",
+            "INIT": "01"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "R15C2_SLICE0",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "d:\\oss-cad-suite\\bin\\../share/yosys/gowin/cells_map.v:135.23-136.15"
+          },
+          "port_directions": {
+            "LSR": "input",
+            "CE": "input",
+            "Q": "output",
+            "F": "output",
+            "CLK": "input",
+            "D": "input",
+            "C": "input",
+            "B": "input",
+            "A": "input"
+          },
+          "connections": {
+            "LSR": [ 3877471 ],
+            "CE": [  ],
+            "Q": [ 3877471 ],
+            "F": [  ],
+            "CLK": [ 3877467 ],
+            "D": [  ],
+            "C": [  ],
+            "B": [  ],
+            "A": [ 3877471 ]
+          }
+        },
+        "$PACKER_GND": {
+          "hide_name": 1,
+          "type": "GND",
+          "parameters": {
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "GND"
+          },
+          "port_directions": {
+            "G": "output"
+          },
+          "connections": {
+            "G": [ 3877509 ]
+          }
+        },
+        "col_OBUF_O$iob": {
+          "hide_name": 0,
+          "type": "IOB",
+          "parameters": {
+            "ENABLE_USED": "00000000000000000000000000000000",
+            "OUTPUT_USED": "00000000000000000000000000000001",
+            "INPUT_USED": "00000000000000000000000000000000"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "R14C1_IOBB",
+            "src": "../design/barrido.sv:10.30-10.33"
+          },
+          "port_directions": {
+            "O": "output",
+            "OEN": "input",
+            "I": "input",
+            "PAD": "inout"
+          },
+          "connections": {
+            "O": [  ],
+            "OEN": [  ],
+            "I": [ 3877476 ],
+            "PAD": [  ]
+          }
+        },
+        "clk_IBUF_I$iob": {
+          "hide_name": 0,
+          "type": "IOB",
+          "parameters": {
+            "ENABLE_USED": "00000000000000000000000000000000",
+            "OUTPUT_USED": "00000000000000000000000000000000",
+            "INPUT_USED": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000110",
+            "NEXTPNR_BEL": "R17C47_IOBA",
+            "src": "../design/barrido.sv:9.30-9.33",
+            "&IO_TYPE=LVCMOS33": "00000000000000000000000000000001",
+            "&PULL_MODE=UP": "00000000000000000000000000000001"
+          },
+          "port_directions": {
+            "O": "output",
+            "OEN": "input",
+            "I": "input",
+            "PAD": "inout"
+          },
+          "connections": {
+            "O": [ 3877467 ],
+            "OEN": [  ],
+            "I": [  ],
+            "PAD": [  ]
+          }
+        },
+        "GSR": {
+          "hide_name": 0,
+          "type": "GSR",
+          "parameters": {
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "R1C1_GSR0"
+          },
+          "port_directions": {
+            "GSRI": "input"
+          },
+          "connections": {
+            "GSRI": [ 3877511 ]
+          }
+        }
+      },
+      "netnames": {
+        "col_reg[0]": {
+          "hide_name": 0,
+          "bits": [ 3877485 ] ,
+          "attributes": {
+            "ROUTING": "R14C2_S13;R14C2_Q0_S130;1;R15C2_W27;R15C2_S131_W270;1;R15C1_A0;R15C1_E272_A0;1;R14C2_Q0;;1;R14C2_X05;R14C2_Q0_X05;1;R14C2_A3;R14C2_X05_A3;1",
+            "src": "../design/barrido.sv:17.23-17.30"
+          }
+        },
+        "col_reg[2]": {
+          "hide_name": 0,
+          "bits": [ 3877479 ] ,
+          "attributes": {
+            "ROUTING": "R14C2_W13;R14C2_Q5_W130;1;R14C1_A0;R14C1_W131_A0;1;R14C2_Q5;;1;R14C2_N13;R14C2_Q5_N130;1;R14C2_A2;R14C2_N130_A2;1",
+            "src": "../design/barrido.sv:17.23-17.30"
+          }
+        },
+        "$PACKER_VCC_NET": {
+          "hide_name": 1,
+          "bits": [ 3877511 ] ,
+          "attributes": {
+            "ROUTING": "VCC;;1;R1C1_W24;R1C1_VCC_W240;1;R1C1_C4;R1C1_E241_C4;1"
+          }
+        },
+        "col_reg[3]": {
+          "hide_name": 0,
+          "bits": [ 3877476 ] ,
+          "attributes": {
+            "ROUTING": "R14C2_EW20;R14C2_Q2_EW20;1;R14C1_D1;R14C1_W121_D1;1;R14C2_Q2;;1;R14C2_X01;R14C2_Q2_X01;1;R14C2_A0;R14C2_X01_A0;1",
+            "src": "../design/barrido.sv:17.23-17.30"
+          }
+        },
+        "clockCounter": {
+          "hide_name": 0,
+          "bits": [ 3877471 ] ,
+          "attributes": {
+            "ROUTING": "R15C2_X05;R15C2_Q0_X05;1;R15C2_LSR0;R15C2_X05_LSR0;1;R14C2_CE1;R14C2_X07_CE1;1;R14C2_CE2;R14C2_X07_CE2;1;R15C2_N20;R15C2_Q0_N200;1;R14C2_X07;R14C2_N201_X07;1;R14C2_CE0;R14C2_X07_CE0;1;R15C2_Q0;;1;R15C2_X01;R15C2_Q0_X01;1;R15C2_A0;R15C2_X01_A0;1",
+            "src": "../design/barrido.sv:14.11-14.23"
+          }
+        },
+        "col_reg[1]": {
+          "hide_name": 0,
+          "bits": [ 3877482 ] ,
+          "attributes": {
+            "ROUTING": "R14C2_EW10;R14C2_Q3_EW10;1;R14C1_N25;R14C1_W111_N250;1;R13C1_A0;R13C1_N251_A0;1;R14C2_Q3;;1;R14C2_X06;R14C2_Q3_X06;1;R14C2_A5;R14C2_X06_A5;1",
+            "src": "../design/barrido.sv:17.23-17.30"
+          }
+        },
+        "clk_IBUF_I_O": {
+          "hide_name": 0,
+          "bits": [ 3877467 ] ,
+          "attributes": {
+            "ROUTING": "R17C47_F6;;5;R15C2_CLK0;R15C2_GB00_CLK0;5;R15C4_GBO0;R15C4_GT00_GBO0;5;R20C4_GT00;R20C4_SPINE16_GT00;5;R10C28_SPINE16;R10C28_PCLKR1_SPINE16;5;R14C2_CLK1;R14C2_GB00_CLK1;5;R14C4_GBO0;R14C4_GT00_GBO0;5;R14C2_CLK2;R14C2_GB00_CLK2;5;R14C2_CLK0;R14C2_GB00_CLK0;5"
+          }
+        },
+        "$PACKER_GND_NET": {
+          "hide_name": 1,
+          "bits": [ 3877509 ] ,
+          "attributes": {
+            "ROUTING": "VSS;;1;R14C1_W27;R14C1_VSS_W270;1;R14C2_LSR0;R14C2_E272_LSR0;1"
+          }
+        }
+      }
+    }
+  }
+}

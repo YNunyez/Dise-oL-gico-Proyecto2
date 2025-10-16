@@ -9,7 +9,7 @@ module barrido_tb;
     logic [3:0] col;
 
     // Instantiate the Unit Under Test (barrido)
-    barrido #(135) DUT (
+    barrido #(1) DUT (
         .clk(clk),
         .col(col)
     );
@@ -17,7 +17,7 @@ module barrido_tb;
     // Clock generation
     initial begin
         clk = 0;
-        forever #10 clk = ~clk;  // 50 MHz clock (period = 20ns)
+        forever #20 clk = ~clk;  // 50 MHz clock (period = 20ns)
     end
 
     // Simulation control

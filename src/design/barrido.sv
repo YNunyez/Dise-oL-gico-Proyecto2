@@ -4,28 +4,28 @@ module barrido# (
     // number of columns
     parameter int WIDTH     = 4,
     // set to 1 to make the physical columns active-low (invert output)
-    parameter bit ACTIVE_LOW = 0'b0
+    parameter bit ACTIVE_LOW = 1'b0
 )(
     input  logic             clk,
     output logic [WIDTH-1:0] col
 );
 
     // simple free-running clock divider / step timer
-    logic clockCounter = 0;
+    int clockCounter = 0;
 
     // one-hot shift register that holds which column is active
     logic [WIDTH-1:0] col_reg = { { (WIDTH-1){1'b0} }, 1'b1 };
 
     // rotate the one-hot bit each time clockCounter reaches WAIT_TIME
     always_ff @(posedge clk) begin
-        //clockCounter <= clockCounter + 1;
-            // rotate left: move MSB into LSB
-        col_reg <= { col_reg[WIDTH-2:0], col_reg[WIDTH-1] };
-        //if (clockCounter >= WAIT_TIME) begin
-            //clockCounter <= 0;
-            // rotate left: move MSB into LSB
-            //col_reg <= { col_reg[WIDTH-2:0], col_reg[WIDTH-1] };
-        //end
+        // rotate left: move MSB into LSB
+        if (clockCounter >= WAIT_TIME) begin
+            clockCounter <= 0;
+            //rotate left: move MSB into LSB
+            col_reg <= { col_reg[WIDTH-2:0], col_reg[WIDTH-1] };
+        end else begin
+        clockCounter <= clockCounter + 1;
+        end
     end
 
     // apply active-low if requested

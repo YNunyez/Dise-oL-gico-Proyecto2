@@ -11,118 +11,93 @@ module sistema_de_lectura #(
     input  logic              clk,
     output logic [WIDTH-1:0]  col,
     input  logic  [WIDTH-1:0] fil,
-    // new capture interface
-    output logic [WIDTH-1:0]  pressed_col_out, // one-hot column of last accepted press
-    output logic [WIDTH-1:0]  pressed_row_out, // one-hot row of last accepted press
-    output logic              pressed_valid,   // asserted when a captured press is available
+    output logic [WIDTH-1:0]  pressed_col_out, // puerto -- NO redeclarar internamente
+    output logic [WIDTH-1:0]  pressed_row_out, // puerto -- NO redeclarar internamente
+    output logic              pressed_valid,   // puerto -- NO redeclarar internamente
     input  logic              ack_read         // consumer pulses this to clear pressed_valid
 );
 
-    // instantiate barrido to drive 'col'
-    barrido #(.WIDTH(WIDTH)) barrido (
+    // barrido instancia (debe existir en el proyecto)
+    barrido #(.WIDTH(WIDTH)) u_barrido (
         .clk(clk),
         .col(col)
     );
 
-    // --- synchronize raw inputs into clk domain (2-stage) ---
-    logic [WIDTH-1:0] fil_sync1, fil_sync2, fil_prev;
-    always_ff @(posedge clk) begin
-        fil_sync1 <= fil;
-        fil_sync2 <= fil_sync1;
-        fil_prev  <= fil_sync2;
-    end
+    // --- reemplazo: usar el módulo `debounce` para obtener niveles estables por fila ---
+    // Debouncer vectorial: entrega niveles estables por bit en el dominio 'clk'
+    logic [WIDTH-1:0] pb_db;       // debounced level per row
+    debounce #(.WIDTH(WIDTH), .THRESH(DEBOUNCE_PULSES)) u_debounce (
+        .pb_1(fil),
+        .clk(clk),
+        .pb_out(pb_db)
+    );
 
-    // edge detect (rising edges on rows)
-    logic [WIDTH-1:0] fil_rise;
-    assign fil_rise = fil_sync2 & ~fil_prev;
+    // detectar flanco 0->1 sobre la salida debounced
+    logic [WIDTH-1:0] pb_prev;
+    always_ff @(posedge clk) pb_prev <= pb_db;
+    logic [WIDTH-1:0] pb_rise = pb_db & ~pb_prev;
 
-    // --- press capture + debounce across rotations ---
-    logic                press_pending = 1'b0;
-    logic [WIDTH-1:0]    pressed_row_oh;
-    logic [WIDTH-1:0]    pressed_col_oh;      // snapshot of col at first detection
-    int unsigned         confirm_count = 0;
+    // estado de captura / debounce (se usan directamente los puertos de salida)
+    logic press_pending;
+    logic [WIDTH-1:0] pressed_row_oh;
+    logic [WIDTH-1:0] pressed_col_oh;
+    integer confirm_count;
 
-    // outputs / status
-    logic                debounced_event;
-    logic [WIDTH-1:0]    last_pressed_col;
-    logic [WIDTH-1:0]    last_pressed_row;
-
-    // initialize capture outputs
+    // inicialización para simulación (opcional pero útil)
     initial begin
         pressed_col_out = '0;
         pressed_row_out = '0;
         pressed_valid   = 1'b0;
+        press_pending   = 1'b0;
+        confirm_count   = 0;
     end
 
-    always_ff @(posedge clk) begin
-        debounced_event <= 1'b0;
+    // --- reemplazo: usar módulos `register` para guardar la columna/fila aceptadas ---
+    // señales d (entrada) para los registros
+    logic [WIDTH-1:0] reg_col_d;
+    logic [WIDTH-1:0] reg_row_d;
 
+    // Al aceptar la pulsación, cargamos las entradas de los registros en lugar de
+    // asignar directamente a los puertos pressed_col_out/pressed_row_out.
+    // (Aquí solo se muestra la modificación en la rama de aceptación)
+    always_ff @(posedge clk) begin
+        // por defecto no generar evento transitorio
         if (!press_pending) begin
-            if (|fil_rise) begin
-                // capture which row rose and which column was active right now
-                press_pending    <= 1'b1;
-                pressed_row_oh   <= fil_rise;
-                pressed_col_oh   <= col;
-                confirm_count    <= 0;
+            if (|pb_rise) begin
+                press_pending  <= 1'b1;
+                pressed_row_oh <= pb_rise;
+                pressed_col_oh <= col;
+                confirm_count  <= 0;
             end
         end else begin
-            // when the captured column comes around, check the row input
+            // cuando el column snapshot aparece, confirmar el row
             if (|(pressed_col_oh & col)) begin
-                if (|(pressed_row_oh & fil_sync2)) begin
-                    // confirmation: at this column visit the row reads high
+                if (|(pressed_row_oh & pb_db)) begin
                     confirm_count <= confirm_count + 1;
                     if (confirm_count + 1 >= DEBOUNCE_PULSES) begin
-                        // debounced press accepted
-                        debounced_event   <= 1'b1;
-                        last_pressed_col  <= pressed_col_oh;
-                        last_pressed_row  <= pressed_row_oh;
-                        press_pending     <= 1'b0;
-                        confirm_count     <= 0;
-
-                        // latch outward (only if consumer hasn't read previous)
+                        // aceptar: cargar d's para los registros y señalizar valid
                         if (!pressed_valid) begin
-                            pressed_col_out <= pressed_col_oh;
-                            pressed_row_out <= pressed_row_oh;
-                            pressed_valid   <= 1'b1;
+                            reg_col_d    <= pressed_col_oh;   // nueva carga al registro de columna
+                            reg_row_d    <= pressed_row_oh;   // nueva carga al registro de fila
+                            pressed_valid<= 1'b1;
                         end
+                        press_pending <= 1'b0;
+                        confirm_count <= 0;
                     end
                 end else begin
-                    // failed confirmation for this visit -> reset count and keep waiting
                     confirm_count <= 0;
                 end
             end
-
-            // optional: if the row is released completely before confirmation, cancel
-            if (!(|(
-                pressed_row_oh & fil_sync2
-            ))) begin
-                // if the row is stable low for a long period you may want to cancel;
-                // left simple: we only clear on explicit acceptance or external logic
-            end
         end
 
-        // ack clears valid (synchronous)
+        // ack del consumidor limpia la bandera
         if (ack_read)
             pressed_valid <= 1'b0;
     end
 
-    // (optional) expose debounced_event as an output or hook into other logic
-
-    // capture outputs (latched using register module)
-    logic [WIDTH-1:0] pressed_col_out /* driven by register q */;
-    logic [WIDTH-1:0] pressed_row_out /* driven by register q */;
-    logic             pressed_valid;
-
-    // prepare register data: load new value when debounced_event, otherwise hold current q
-    logic [WIDTH-1:0] reg_col_d;
-    logic [WIDTH-1:0] reg_row_d;
-
-    always_comb begin
-        reg_col_d = debounced_event ? pressed_col_oh : pressed_col_out;
-        reg_row_d = debounced_event ? pressed_row_oh : pressed_row_out;
-    end
-
-    // instantiate parameterized registers (reuse your register module)
+    // instanciar los registros que mantienen el valor latched
+    // Asumo que tu módulo `register` tiene la interfaz (clk, d, q).
+    // Si la firma real difiere, ajusta los nombres de puerto.
     register #(.WIDTH(WIDTH)) reg_col (
         .clk(clk),
         .d(reg_col_d),
@@ -134,13 +109,5 @@ module sistema_de_lectura #(
         .d(reg_row_d),
         .q(pressed_row_out)
     );
-
-    // valid flag and ack handling (synchronous)
-    always_ff @(posedge clk) begin
-        if (debounced_event)
-            pressed_valid <= 1'b1;
-        else if (ack_read)
-            pressed_valid <= 1'b0;
-    end
 
 endmodule

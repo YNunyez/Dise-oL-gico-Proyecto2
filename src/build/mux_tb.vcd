@@ -1,0 +1,61 @@
+$date
+	Mon Sep 22 22:50:24 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module mux_tb $end
+$var wire 4 ! s_mux [3:0] $end
+$var reg 4 " corregido [3:0] $end
+$var reg 2 # e_mux [1:0] $end
+$var reg 8 $ p_error [7:0] $end
+$var reg 1 % s1 $end
+$var reg 1 & s2 $end
+$var reg 1 ' s3 $end
+$scope module uut $end
+$var wire 4 ( corregido [3:0] $end
+$var wire 2 ) e_mux [1:0] $end
+$var wire 8 * p_error [7:0] $end
+$var wire 1 % s1 $end
+$var wire 1 & s2 $end
+$var wire 1 ' s3 $end
+$var reg 4 + s_mux [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b1010 +
+b11001100 *
+b1 )
+b1010 (
+1'
+0&
+1%
+b11001100 $
+b1 #
+b1010 "
+b1010 !
+$end
+#5000
+b1011 !
+b1011 +
+b10 #
+b10 )
+#10000
+b101 !
+b101 +
+b11 #
+b11 )
+#15000
+b0 !
+b0 +
+b0 #
+b0 )
+#20000

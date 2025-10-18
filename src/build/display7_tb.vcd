@@ -1,0 +1,104 @@
+$date
+	Mon Sep 22 20:24:20 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module display7_tb $end
+$var wire 7 ! seg [6:0] $end
+$var reg 4 " p [3:0] $end
+$scope module dut $end
+$var wire 4 # s_mux [3:0] $end
+$var reg 7 $ seg [6:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b1000000 $
+b0 #
+b0 "
+b1000000 !
+$end
+#10
+b1111001 !
+b1111001 $
+b1 "
+b1 #
+#20
+b100100 !
+b100100 $
+b10 "
+b10 #
+#30
+b110000 !
+b110000 $
+b11 "
+b11 #
+#40
+b11001 !
+b11001 $
+b100 "
+b100 #
+#50
+b10010 !
+b10010 $
+b101 "
+b101 #
+#60
+b10 !
+b10 $
+b110 "
+b110 #
+#70
+b1111000 !
+b1111000 $
+b111 "
+b111 #
+#80
+b0 !
+b0 $
+b1000 "
+b1000 #
+#90
+b10000 !
+b10000 $
+b1001 "
+b1001 #
+#100
+b1000 !
+b1000 $
+b1010 "
+b1010 #
+#110
+b11 !
+b11 $
+b1011 "
+b1011 #
+#120
+b110 !
+b110 $
+b1100 "
+b1100 #
+#130
+b100001 !
+b100001 $
+b1101 "
+b1101 #
+#140
+b110 !
+b110 $
+b1110 "
+b1110 #
+#150
+b1110 !
+b1110 $
+b1111 "
+b1111 #
+#160

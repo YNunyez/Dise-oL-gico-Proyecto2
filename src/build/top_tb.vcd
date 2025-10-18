@@ -1,0 +1,257 @@
+$date
+	Tue Sep 23 15:34:43 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module top_tb $end
+$var wire 1 ! st $end
+$var wire 1 " simplerror_detectado $end
+$var wire 7 # seg [6:0] $end
+$var wire 4 $ s_mux [3:0] $end
+$var wire 1 % s3 $end
+$var wire 1 & s2 $end
+$var wire 1 ' s1 $end
+$var wire 8 ( recibido [7:0] $end
+$var wire 8 ) palabra_corregida [7:0] $end
+$var wire 8 * palabra [7:0] $end
+$var wire 1 + led_doblerror $end
+$var wire 1 , error_simple $end
+$var wire 1 - error_doble $end
+$var wire 1 . doblerror_detectado $end
+$var wire 4 / corregido [3:0] $end
+$var reg 4 0 dato_entrada [3:0] $end
+$var reg 8 1 dato_error [7:0] $end
+$var reg 2 2 e_mux [1:0] $end
+$var reg 1 3 reloj $end
+$scope module cod $end
+$var wire 4 4 dato_entrada [3:0] $end
+$var wire 1 3 reloj $end
+$var reg 8 5 palabra [7:0] $end
+$upscope $end
+$scope module cor $end
+$var wire 1 . doblerror_detectado $end
+$var wire 1 3 reloj $end
+$var wire 1 " simplerror_detectado $end
+$var wire 1 ! st $end
+$var wire 1 % s3 $end
+$var wire 1 & s2 $end
+$var wire 1 ' s1 $end
+$var wire 8 6 recibido [7:0] $end
+$var wire 1 , error_simple $end
+$var wire 1 - error_doble $end
+$var reg 4 7 corregido [3:0] $end
+$var reg 1 + led_doblerror $end
+$var reg 8 8 palabra_corregida [7:0] $end
+$upscope $end
+$scope module dec $end
+$var wire 8 9 dato_error [7:0] $end
+$var wire 8 : palabra [7:0] $end
+$var wire 1 3 reloj $end
+$var reg 1 - error_doble $end
+$var reg 1 , error_simple $end
+$var reg 8 ; recibido [7:0] $end
+$var reg 1 ' s1 $end
+$var reg 1 & s2 $end
+$var reg 1 % s3 $end
+$var reg 1 ! st $end
+$upscope $end
+$scope module disp $end
+$var wire 4 < s_mux [3:0] $end
+$var reg 7 = seg [6:0] $end
+$upscope $end
+$scope module mux0 $end
+$var wire 4 > corregido [3:0] $end
+$var wire 2 ? e_mux [1:0] $end
+$var wire 8 @ p_error [7:0] $end
+$var wire 1 ' s1 $end
+$var wire 1 & s2 $end
+$var wire 1 % s3 $end
+$var reg 4 A s_mux [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 A
+b10100101 @
+bx ?
+b1010 >
+b1000000 =
+b0 <
+b10100101 ;
+b10100101 :
+b10100101 9
+b10100101 8
+b1010 7
+b10100101 6
+b10100101 5
+b1010 4
+03
+bx 2
+b10100101 1
+b1010 0
+b1010 /
+0.
+0-
+0,
+0+
+b10100101 *
+b10100101 )
+b10100101 (
+0'
+0&
+0%
+b0 $
+b1000000 #
+0"
+0!
+$end
+#5000
+13
+#10000
+b1000 #
+b1000 =
+b1010 $
+b1010 <
+b1010 A
+03
+b1 2
+b1 ?
+#15000
+b10010 #
+b10010 =
+b101 $
+b101 <
+b101 A
+13
+b10 2
+b10 ?
+#20000
+b1000000 #
+b1000000 =
+b0 $
+b0 <
+b0 A
+03
+b11 2
+b11 ?
+#25000
+b10010 #
+b10010 =
+b10 /
+b10 7
+b10 >
+b101 $
+b101 <
+b101 A
+b110011 )
+b110011 8
+1"
+1,
+1!
+1%
+1'
+b10011 (
+b10011 6
+b10011 ;
+b10011 @
+b110011 *
+b110011 5
+b110011 :
+13
+b10011 1
+b10011 9
+b10 0
+b10 4
+#30000
+03
+#35000
+b100100 #
+b100100 =
+b10 $
+b10 <
+b10 A
+13
+b1 2
+b1 ?
+#40000
+b1000000 #
+b1000000 =
+b0 $
+b0 <
+b0 A
+03
+b10 2
+b10 ?
+#45000
+b10010 #
+b10010 =
+b101 $
+b101 <
+b101 A
+13
+b11 2
+b11 ?
+#50000
+b1111001 #
+b1111001 =
+b1 /
+b1 7
+b1 >
+b1 $
+b1 <
+b1 A
+1+
+b1100 )
+b1100 8
+1.
+1-
+0"
+0,
+0!
+0%
+b1100 (
+b1100 6
+b1100 ;
+b1100 @
+b11001100 *
+b11001100 5
+b11001100 :
+03
+b1100 1
+b1100 9
+b1101 0
+b1101 4
+#55000
+13
+#60000
+03
+b1 2
+b1 ?
+#65000
+b0 #
+b0 =
+b1000 $
+b1000 <
+b1000 A
+13
+b10 2
+b10 ?
+#70000
+b1111001 #
+b1111001 =
+b1 $
+b1 <
+b1 A
+03
+b11 2
+b11 ?
+#75000
+13

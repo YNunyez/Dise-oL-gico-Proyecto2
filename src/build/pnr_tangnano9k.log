@@ -1,0 +1,194 @@
+Info: Series:GW1N-9C Device:GW1NR-9C Package:QFN88P Speed:C6/I5
+Info: Cell ded not found
+Info: Cell ded not found
+
+Info: Packing constants..
+Info: Packing Shadow RAM..
+Info: Packing GSR..
+Info: Packing IOs..
+Info: Packing diff IOs..
+Info: Packing IO logic..
+Info: Packing wide LUTs..
+Info: Packing LUT5s..
+Info: Packing LUT6s..
+Info: Packing LUT7s..
+Info: Packing LUT8s..
+Info: Packing ALUs..
+Info: Packing LUT-FFs..
+Info: Packing non-LUT FFs..
+Info: Packing PLLs..
+Info: Checksum: 0x364d9833
+
+Info: Annotating ports with timing budgets for target frequency 27.00 MHz
+Info: Checksum: 0x364d9833
+
+Info: Device utilisation:
+Info: 	                 VCC:     1/    1   100%
+Info: 	               SLICE:    94/ 8640     1%
+Info: 	                 IOB:    33/  274    12%
+Info: 	                ODDR:     0/  274     0%
+Info: 	           MUX2_LUT5:    36/ 4320     0%
+Info: 	           MUX2_LUT6:    18/ 2160     0%
+Info: 	           MUX2_LUT7:     7/ 1080     0%
+Info: 	           MUX2_LUT8:     3/ 1056     0%
+Info: 	                 GND:     1/    1   100%
+Info: 	                RAMW:     0/  270     0%
+Info: 	                 GSR:     1/    1   100%
+Info: 	                 OSC:     0/    1     0%
+Info: 	                rPLL:     0/    2     0%
+
+Info: Placed 29 cells based on constraints.
+Info: Creating initial analytic placement for 32 cells, random placement wirelen = 1827.
+Info:     at initial placer iter 0, wirelen = 654
+Info:     at initial placer iter 1, wirelen = 619
+Info:     at initial placer iter 2, wirelen = 602
+Info:     at initial placer iter 3, wirelen = 601
+Info: Running main analytical placer, max placement attempts per cell = 10000.
+Info:     at iteration #1, type SLICE: wirelen solved = 599, spread = 651, legal = 663; time = 0.00s
+Info:     at iteration #1, type VCC: wirelen solved = 663, spread = 663, legal = 663; time = 0.00s
+Info:     at iteration #1, type MUX2_LUT6: wirelen solved = 659, spread = 688, legal = 688; time = 0.00s
+Info:     at iteration #1, type MUX2_LUT7: wirelen solved = 685, spread = 685, legal = 687; time = 0.00s
+Info:     at iteration #1, type MUX2_LUT8: wirelen solved = 687, spread = 687, legal = 690; time = 0.00s
+Info:     at iteration #1, type GSR: wirelen solved = 690, spread = 690, legal = 690; time = 0.00s
+Info:     at iteration #1, type ALL: wirelen solved = 601, spread = 680, legal = 695; time = 0.00s
+Info: HeAP Placer Time: 0.03s
+Info:   of which solving equations: 0.01s
+Info:   of which spreading cells: 0.00s
+Info:   of which strict legalisation: 0.00s
+
+Info: Running simulated annealing placer for refinement.
+Info:   at iteration #1: temp = 0.000000, timing cost = 0, wirelen = 695
+Info:   at iteration #5: temp = 0.000000, timing cost = 0, wirelen = 615
+Info:   at iteration #10: temp = 0.000000, timing cost = 0, wirelen = 599
+Info:   at iteration #11: temp = 0.000000, timing cost = 0, wirelen = 597 
+Info: SA placement time 0.05s
+
+Info: Max delay <async> -> <async>: 33.75 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 1 endpoint(s)
+Info:          + represents [1,1) endpoint(s)
+Info: [  3292,   4760) |****+
+Info: [  4760,   6228) |*+
+Info: [  6228,   7696) |************+
+Info: [  7696,   9164) |***+
+Info: [  9164,  10632) |******+
+Info: [ 10632,  12100) | 
+Info: [ 12100,  13568) | 
+Info: [ 13568,  15036) | 
+Info: [ 15036,  16504) |**+
+Info: [ 16504,  17972) |*+
+Info: [ 17972,  19440) |****+
+Info: [ 19440,  20908) |******+
+Info: [ 20908,  22376) |****************+
+Info: [ 22376,  23844) |************************************************************ 
+Info: [ 23844,  25312) |******+
+Info: [ 25312,  26780) |**************************+
+Info: [ 26780,  28248) |**************************+
+Info: [ 28248,  29716) |*****+
+Info: [ 29716,  31184) |************************+
+Info: [ 31184,  32652) |*****************+
+Info: Checksum: 0xeb41dafc
+Info: Find global nets...
+Info: Routing globals...
+Info:   Route net palabra_corregida[2], use clock #0.
+
+Info: Routing..
+Info: Setting up routing queue.
+Info: Routing 491 arcs.
+Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
+Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
+Info:        600 |       49        551 |   49   551 |         0|       0.26       0.26|
+Info: Routing complete.
+Info: Router1 time 0.26s
+Info: Checksum: 0xfc2d17a1
+
+Info: Critical path report for cross-domain path '<async>' -> '<async>':
+Info: curr total
+Info:  0.0  0.0  Source correccion.recibido_IBUF_O_1$iob.O
+Info:  8.9  8.9    Net recibido[6] budget 37.037037 ns (12,28) -> (33,15)
+Info:                Sink correccion.error_simple_LUT4_F_I0_MUX2_LUT8_O_I0_MUX2_LUT7_O_I1_MUX2_LUT6_O_I1_MUX2_LUT5_O_I1_LUT4_F_LC.B
+Info:                Defined in:
+Info:                  ../design/top.sv:15.17-15.25
+Info:  1.1 10.0  Source correccion.error_simple_LUT4_F_I0_MUX2_LUT8_O_I0_MUX2_LUT7_O_I1_MUX2_LUT6_O_I1_MUX2_LUT5_O_I1_LUT4_F_LC.F
+Info:  0.3 10.4    Net correccion.error_simple_LUT4_F_I0_MUX2_LUT8_O_I0_MUX2_LUT7_O_I1_MUX2_LUT6_O_I1_MUX2_LUT5_O_I1 budget 5.694839 ns (33,15) -> (33,15)
+Info:                Sink correccion.error_simple_LUT4_F_I0_MUX2_LUT8_O_I0_MUX2_LUT7_O_I1_MUX2_LUT6_O_I1_MUX2_LUT5_O_LC.I1
+Info:                Defined in:
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:170.42-170.67
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:165.42-165.67
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:159.41-159.66
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:151.13-151.15
+Info:  0.2 10.5  Source correccion.error_simple_LUT4_F_I0_MUX2_LUT8_O_I0_MUX2_LUT7_O_I1_MUX2_LUT6_O_I1_MUX2_LUT5_O_LC.OF
+Info:  0.3 10.9    Net correccion.error_simple_LUT4_F_I0_MUX2_LUT8_O_I0_MUX2_LUT7_O_I1_MUX2_LUT6_O_I1 budget 5.694839 ns (33,15) -> (33,15)
+Info:                Sink correccion.error_simple_LUT4_F_I0_MUX2_LUT8_O_I0_MUX2_LUT7_O_I1_MUX2_LUT6_O_LC.I1
+Info:                Defined in:
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:170.42-170.67
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:165.42-165.67
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:157.13-157.15
+Info:  0.4 11.2  Source correccion.error_simple_LUT4_F_I0_MUX2_LUT8_O_I0_MUX2_LUT7_O_I1_MUX2_LUT6_O_LC.OF
+Info:  0.3 11.6    Net correccion.error_simple_LUT4_F_I0_MUX2_LUT8_O_I0_MUX2_LUT7_O_I1 budget 5.694839 ns (33,15) -> (33,15)
+Info:                Sink correccion.error_simple_LUT4_F_I0_MUX2_LUT8_O_I0_MUX2_LUT7_O_LC.I1
+Info:                Defined in:
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:170.42-170.67
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:163.13-163.15
+Info:  0.5 12.1  Source correccion.error_simple_LUT4_F_I0_MUX2_LUT8_O_I0_MUX2_LUT7_O_LC.OF
+Info:  0.4 12.5    Net correccion.error_simple_LUT4_F_I0_MUX2_LUT8_O_I0 budget 5.694839 ns (33,15) -> (32,15)
+Info:                Sink correccion.error_simple_LUT4_F_I0_MUX2_LUT8_O_LC.I0
+Info:                Defined in:
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:169.9-169.11
+Info:  0.7 13.2  Source correccion.error_simple_LUT4_F_I0_MUX2_LUT8_O_LC.OF
+Info:  1.4 14.6    Net correccion.error_simple_LUT4_F_I0[2] budget 5.694839 ns (32,15) -> (35,16)
+Info:                Sink correccion.error_simple_LUT4_F_I0_LUT2_I0_LC.A
+Info:                Defined in:
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:130.20-130.21
+Info:  1.0 15.6  Source correccion.error_simple_LUT4_F_I0_LUT2_I0_LC.F
+Info:  0.3 15.9    Net correccion.error_simple_LUT4_F_I0_LUT2_I0_F budget 3.623004 ns (35,16) -> (35,16)
+Info:                Sink correccion.error_simple_LUT4_F_I0_LUT2_I0_F_MUX2_LUT5_I0_LC.I0
+Info:                Defined in:
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:159.41-159.66
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:151.9-151.11
+Info:  0.2 16.1  Source correccion.error_simple_LUT4_F_I0_LUT2_I0_F_MUX2_LUT5_I0_LC.OF
+Info:  0.3 16.4    Net correccion.error_simple_LUT4_F_I0_LUT2_I0_F_MUX2_LUT5_I0_O budget 3.623004 ns (35,16) -> (35,16)
+Info:                Sink correccion.error_simple_LUT4_F_I0_LUT2_I0_F_MUX2_LUT5_I0_O_MUX2_LUT6_I1_LC.I1
+Info:                Defined in:
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:157.13-157.15
+Info:  0.4 16.8  Source correccion.error_simple_LUT4_F_I0_LUT2_I0_F_MUX2_LUT5_I0_O_MUX2_LUT6_I1_LC.OF
+Info:  4.3 21.1    Net correccion.error_simple_LUT4_F_I2_LUT2_I0_F_MUX2_LUT5_I0_O_MUX2_LUT6_I1_O[2] budget 3.623004 ns (35,16) -> (38,2)
+Info:                Sink display.seg_LUT4_F_3_LC.A
+Info:                Defined in:
+Info:                  C:\Users\SEBAST~1\OneDrive\DOCUME~1\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:130.20-130.21
+Info:  1.0 22.1  Source display.seg_LUT4_F_3_LC.F
+Info:  1.0 23.1    Net display.seg[2] budget 3.150904 ns (38,2) -> (40,0)
+Info:                Sink seg_OBUF_O_4$iob.I
+Info:                Defined in:
+Info:                  ../design/top.sv:78.14-81.6
+Info:                  ../design/display7.sv:3.24-3.27
+Info: 5.5 ns logic, 17.6 ns routing
+
+Info: Max delay <async> -> <async>: 23.09 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 1 endpoint(s)
+Info:          + represents [1,1) endpoint(s)
+Info: [ 13947,  15070) |******* 
+Info: [ 15070,  16193) |************ 
+Info: [ 16193,  17316) |********** 
+Info: [ 17316,  18439) |** 
+Info: [ 18439,  19562) |******* 
+Info: [ 19562,  20685) | 
+Info: [ 20685,  21808) | 
+Info: [ 21808,  22931) |*** 
+Info: [ 22931,  24054) |** 
+Info: [ 24054,  25177) | 
+Info: [ 25177,  26300) |*********** 
+Info: [ 26300,  27423) |********* 
+Info: [ 27423,  28546) |************************************************************ 
+Info: [ 28546,  29669) |********************************************* 
+Info: [ 29669,  30792) |******************* 
+Info: [ 30792,  31915) |*************************************************** 
+Info: [ 31915,  33038) |***************************** 
+Info: [ 33038,  34161) |************************* 
+Info: [ 34161,  35284) |**** 
+Info: [ 35284,  36407) |** 
+
+Info: Program finished normally.

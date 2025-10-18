@@ -1,0 +1,165 @@
+$date
+	Mon Sep 22 17:40:09 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module hamming_tb $end
+$var wire 1 ! st $end
+$var wire 1 " simplerror_detectado $end
+$var wire 7 # seg [6:0] $end
+$var wire 1 $ s3 $end
+$var wire 1 % s2 $end
+$var wire 1 & s1 $end
+$var wire 8 ' recibido [7:0] $end
+$var wire 8 ( palabra_corregida [7:0] $end
+$var wire 8 ) palabra [7:0] $end
+$var wire 1 * led_doblerror $end
+$var wire 1 + error_simple $end
+$var wire 1 , error_doble $end
+$var wire 1 - doblerror_detectado $end
+$var wire 4 . corregido [3:0] $end
+$var reg 4 / dato_entrada [3:0] $end
+$var reg 4 0 dato_error [3:0] $end
+$var reg 1 1 reloj $end
+$scope module cod $end
+$var wire 4 2 dato_entrada [3:0] $end
+$var wire 1 1 reloj $end
+$var wire 2 3 leds_6_7 [1:0] $end
+$var wire 6 4 led [5:0] $end
+$var reg 8 5 palabra [7:0] $end
+$upscope $end
+$scope module cor $end
+$var wire 1 - doblerror_detectado $end
+$var wire 1 1 reloj $end
+$var wire 1 " simplerror_detectado $end
+$var wire 1 ! st $end
+$var wire 1 $ s3 $end
+$var wire 1 % s2 $end
+$var wire 1 & s1 $end
+$var wire 8 6 recibido [7:0] $end
+$var wire 1 + error_simple $end
+$var wire 1 , error_doble $end
+$var reg 4 7 corregido [3:0] $end
+$var reg 1 * led_doblerror $end
+$var reg 8 8 palabra_corregida [7:0] $end
+$upscope $end
+$scope module dec $end
+$var wire 4 9 dato_error [3:0] $end
+$var wire 8 : palabra [7:0] $end
+$var wire 1 1 reloj $end
+$var reg 1 , error_doble $end
+$var reg 1 + error_simple $end
+$var reg 8 ; recibido [7:0] $end
+$var reg 1 & s1 $end
+$var reg 1 % s2 $end
+$var reg 1 $ s3 $end
+$var reg 1 ! st $end
+$upscope $end
+$scope module disp $end
+$var wire 4 < corregido [3:0] $end
+$var reg 7 = seg [6:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b1000 =
+b1010 <
+b10100101 ;
+b10100101 :
+b1010 9
+b10100101 8
+b1010 7
+b10100101 6
+b10100101 5
+b100101 4
+b10 3
+b1010 2
+01
+b1010 0
+b1010 /
+b1010 .
+0-
+0,
+0+
+0*
+b10100101 )
+b10100101 (
+b10100101 '
+0&
+0%
+0$
+b1000 #
+0"
+0!
+$end
+#5000
+11
+#10000
+b100100 #
+b100100 =
+b10 .
+b10 7
+b10 <
+b110011 (
+b110011 8
+1"
+1+
+1!
+1$
+1&
+b110011 4
+b0 3
+b10011 '
+b10011 6
+b10011 ;
+b110011 )
+b110011 5
+b110011 :
+01
+b0 0
+b0 9
+b10 /
+b10 2
+#15000
+11
+#20000
+b11 #
+b11 =
+b1011 .
+b1011 7
+b1011 <
+1*
+b10101100 (
+b10101100 8
+1-
+1,
+0"
+0+
+0!
+0$
+1%
+b11 3
+b1100 4
+b10101100 '
+b10101100 6
+b10101100 ;
+b11001100 )
+b11001100 5
+b11001100 :
+01
+b1011 0
+b1011 9
+b1101 /
+b1101 2
+#25000
+11
+#30000
+01

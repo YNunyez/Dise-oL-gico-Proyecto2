@@ -1,6 +1,6 @@
 module barrido# (
     // number of clk cycles between steps (adjust to change speed)
-    parameter int WAIT_TIME = 1,
+    parameter int WAIT_TIME = 10,
     // number of columns
     parameter int WIDTH     = 4,
     // set to 1 to make the physical columns active-low (invert output)

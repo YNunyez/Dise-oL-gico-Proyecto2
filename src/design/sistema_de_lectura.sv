@@ -116,28 +116,29 @@ module sistema_de_lectura #(
         // Resetear banderas por defecto
     //    reset <= 1'b0;
     //    save <= 1'b0;
-        case({pressed_col_oh, pressed_row_oh})
-            8'b1000_1000 : numero <= 1; // columna 0, fila 0 = 1
-            8'b0100_1000 : numero <= 2; // columna 1, fila 0 = 2
-            8'b0010_1000 : numero <= 3; // columna 2, fila 0 = 3
+        
+        if (debounced_event) begin
+            case({pressed_col_oh, pressed_row_oh})
+                8'b1000_1000 : numero <= 1; // columna 0, fila 0 = 1
+                8'b0100_1000 : numero <= 2; // columna 1, fila 0 = 2
+                8'b0010_1000 : numero <= 3; // columna 2, fila 0 = 3
 
-            8'b1000_0100 : numero <= 4; // columna 0, fila 1 = 4
-            8'b0100_0100 : numero <= 5; // columna 1, fila 1 = 5
-            8'b0010_0100 : numero <= 6; // columna 2, fila 1 = 6
+                8'b1000_0100 : numero <= 4; // columna 0, fila 1 = 4
+                8'b0100_0100 : numero <= 5; // columna 1, fila 1 = 5
+                8'b0010_0100 : numero <= 6; // columna 2, fila 1 = 6
 
-            8'b1000_0010 : numero <= 7; // columna 0, fila 2 = 7
-            8'b0100_0010 : numero <= 8; // columna 1, fila 2 = 8
-            8'b0010_0010 : numero <= 9; // columna 2, fila 2 = 9
+                8'b1000_0010 : numero <= 7; // columna 0, fila 2 = 7
+                8'b0100_0010 : numero <= 8; // columna 1, fila 2 = 8
+                8'b0010_0010 : numero <= 9; // columna 2, fila 2 = 9
 
-            8'b1000_0001 : reset <= 1'b1; // columna 0, fila 3 = * 
-            8'b0100_0001 : numero <= 0; // columna 1, fila 3 = 0
-            8'b0010_0001 : save <= 1'b1; // columna 2, fila 3 = # 
-            default      : begin
-                // No hay acción para combinaciones inválidas
-            end
-        endcase
-        //if (debounced_event) begin
-        //end
+                8'b1000_0001 : reset <= 1'b1; // columna 0, fila 3 = * 
+                8'b0100_0001 : numero <= 0; // columna 1, fila 3 = 0
+                8'b0010_0001 : save <= 1'b1; // columna 2, fila 3 = # 
+                default      : begin
+                    // No hay acción para combinaciones inválidas
+                end
+            endcase
+        end
         // Solo actualizar cuando se detecta una pulsación válida
     end
     // (opcional) exponer debounced_event como salida o conectar a otra lógica

@@ -3,7 +3,6 @@ module top (
     input  logic        rst,
     input  logic        push,
     input  logic        guardar,
-    input  logic        finalizar,
     input  logic [3:0]  entrada,
     output logic [6:0]  seg
 );

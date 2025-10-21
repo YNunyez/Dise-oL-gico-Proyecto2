@@ -1,7 +1,7 @@
 module Suma_datos (
     input  logic        clk,          // Señal de reloj
     input  logic        suma,
-    input  logic        finalizar,
+    input  logic        guardar,
     input  logic [3:0][3:0] numero_sv,
     input  logic [3:0][3:0] numero,
     output logic [3:0][3:0] resultado,
@@ -22,7 +22,7 @@ module Suma_datos (
 
     always_ff @(posedge clk) begin
 
-        if(finalizar) begin
+        if(guardar && ent) begin
             rst_sv <= 1;
             ent <= 0;
             for (i = 0; i < 4; i = i + 1)

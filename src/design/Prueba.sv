@@ -47,7 +47,6 @@ module Prueba (
     Suma_datos Suma_datos (
         .clk        (clk),
         .suma       (suma),
-        .finalizar  (finalizar),
         .numero_sv  (numero_sv),
         .numero     (numero),
         .resultado  (resultado),

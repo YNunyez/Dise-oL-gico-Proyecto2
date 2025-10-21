@@ -1,6 +1,6 @@
 // sistema_de_lectura.sv
-// Top-level system module that demonstrates using registers of different sizes
-// and the existing `barrido` module.
+// Módulo de sistema de nivel superior que demuestra el uso de registros de diferentes tamaños
+// y el módulo `barrido` existente.
 
 //`include "sizes_pkg.sv"
 
@@ -11,23 +11,23 @@ module sistema_de_lectura #(
     input  logic              clk,
     output logic [WIDTH-1:0]  col,
     input  logic  [WIDTH-1:0] fil,
-    // new capture interface
-    output logic [WIDTH-1:0]  pressed_col_out, // one-hot column of last accepted press
-    output logic [WIDTH-1:0]  pressed_row_out, // one-hot row of last accepted press
-    output logic              pressed_valid,   // asserted when a captured press is available
-    input  logic              ack_read,        // consumer pulses this to clear pressed_valid
+    // nueva interfaz de captura
+    output logic [WIDTH-1:0]  pressed_col_out, // salida one-hot de la última columna aceptada
+    output logic [WIDTH-1:0]  pressed_row_out, // salida one-hot de la última fila aceptada
+    output logic              pressed_valid,   // activa cuando hay una pulsación capturada disponible
+    input  logic              ack_read,        // el consumidor pulsa esto para limpiar pressed_valid
     output integer                numero,
     output logic              reset,
     output logic              save
 );
 
-    // instantiate barrido to drive 'col'
+    // barrido de columnas
     barrido #(.WIDTH(WIDTH)) barrido (
         .clk(clk),
         .col(col)
     );
 
-    // --- synchronize raw inputs into clk domain (2-stage) ---
+    // --- sincronizar entradas en bruto al dominio de clk (2 etapas) ---
     logic [WIDTH-1:0] fil_sync1, fil_sync2, fil_prev;
     always_ff @(posedge clk) begin
         fil_sync1 <= fil;
@@ -35,22 +35,22 @@ module sistema_de_lectura #(
         fil_prev  <= fil_sync2;
     end
 
-    // edge detect (rising edges on rows)
+    // detección de flancos (flancos ascendentes en filas)
     logic [WIDTH-1:0] fil_rise;
     assign fil_rise = fil_sync2 & ~fil_prev;
 
-    // --- press capture + debounce across rotations ---
+    // --- captura de pulsación + antirrebote entre rotaciones ---
     logic                press_pending = 1'b0;
     logic [WIDTH-1:0]    pressed_row_oh;
-    logic [WIDTH-1:0]    pressed_col_oh;      // snapshot of col at first detection
+    logic [WIDTH-1:0]    pressed_col_oh;      // instantánea de col en la primera detección
     int unsigned         confirm_count = 0;
 
-    // outputs / status
+    // salidas / estado
     logic                debounced_event;
     logic [WIDTH-1:0]    last_pressed_col;
     logic [WIDTH-1:0]    last_pressed_row;
 
-    // initialize capture outputs
+    // inicializar salidas de captura
     initial begin
         pressed_col_out = '0;
         pressed_row_out = '0;
@@ -65,27 +65,27 @@ module sistema_de_lectura #(
 
         if (!press_pending) begin
             if (|fil_rise) begin
-                // capture which row rose and which column was active right now
+                // capturar qué fila subió y qué columna estaba activa en ese momento
                 press_pending    <= 1'b1;
                 pressed_row_oh   <= fil_rise;
                 pressed_col_oh   <= col;
                 confirm_count    <= 0;
             end
         end else begin
-            // when the captured column comes around, check the row input
+            // cuando la columna capturada aparece, verificar la entrada de fila
             if (|(pressed_col_oh & col)) begin
                 if (|(pressed_row_oh & fil_sync2)) begin
-                    // confirmation: at this column visit the row reads high
+                    // confirmación: en esta visita de columna la fila lee alto
                     confirm_count <= confirm_count + 1;
                     if (confirm_count + 1 >= DEBOUNCE_PULSES) begin
-                        // debounced press accepted
+                        // pulsación aceptada después del antirrebote
                         debounced_event   <= 1'b1;
                         last_pressed_col  <= pressed_col_oh;
                         last_pressed_row  <= pressed_row_oh;
                         press_pending     <= 1'b0;
                         confirm_count     <= 0;
 
-                        // latch outward (only if consumer hasn't read previous)
+                        // activar hacia afuera (solo si el consumidor no ha leído el anterior)
                         if (!pressed_valid) begin
                             pressed_col_out <= pressed_col_oh;
                             pressed_row_out <= pressed_row_oh;
@@ -93,27 +93,27 @@ module sistema_de_lectura #(
                         end
                     end
                 end else begin
-                    // failed confirmation for this visit -> reset count and keep waiting
+                    // confirmación fallida para esta visita -> resetear contador y seguir esperando
                     confirm_count <= 0;
                 end
             end
 
-            // optional: if the row is released completely before confirmation, cancel
+            // opcional: si la fila se libera completamente antes de la confirmación, cancelar
             if (!(|(
                 pressed_row_oh & fil_sync2
             ))) begin
-                // if the row is stable low for a long period you may want to cancel;
-                // left simple: we only clear on explicit acceptance or external logic
+                // si la fila está estable en bajo por un período largo puedes cancelar;
+                // dejado simple: solo limpiamos en aceptación explícita o lógica externa
             end
         end
 
-        // ack clears valid (synchronous)
+        // ack limpia valid (síncrono)
         if (ack_read)
             pressed_valid <= 1'b0;
     end
     
     always_ff @(posedge clk) begin
-        // Reset flags by default
+        // Resetear banderas por defecto
     //    reset <= 1'b0;
     //    save <= 1'b0;
         case({pressed_col_oh, pressed_row_oh})
@@ -133,13 +133,13 @@ module sistema_de_lectura #(
             8'b0100_0001 : numero <= 0; // columna 1, fila 3 = 0
             8'b0010_0001 : save <= 1'b1; // columna 2, fila 3 = # 
             default      : begin
-                // No action for invalid combinations
+                // No hay acción para combinaciones inválidas
             end
         endcase
         //if (debounced_event) begin
         //end
-        // Only update when a valid press is detected
+        // Solo actualizar cuando se detecta una pulsación válida
     end
-    // (optional) expose debounced_event as an output or hook into other logic
-    // ...existing code...
+    // (opcional) exponer debounced_event como salida o conectar a otra lógica
+    // ...código existente...
 endmodule

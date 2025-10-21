@@ -23,7 +23,7 @@ module sistema_de_lectura_tb;
     wire            reset;
     wire            save;
 
-    // Instantiate DUT
+    // Instanciar DUT
     sistema_de_lectura #(
         .WIDTH(WIDTH),
         .DEBOUNCE_PULSES(DB_PULSES)
@@ -40,27 +40,27 @@ module sistema_de_lectura_tb;
         .save(save)
     );
 
-    // clock 50 MHz -> period 20 ns
+    // reloj 50 MHz -> período 20 ns
     initial begin
         clk = 0;
         forever #10 clk = ~clk;
     end
 
-    // waveform dump and header
+    // volcado de formas de onda y encabezado
     initial begin
         $dumpfile("sistema_de_lectura_tb.vcd");
         $dumpvars(0, sistema_de_lectura_tb);
         $display("TIME(ns)\tcol    fil    pcol   prow   valid   numero reset save");
     end
 
-    // print registers and signals every clock edge
+    // imprimir registros y señales en cada flanco de reloj
     always @(posedge clk) begin
         $display("%0t\t%b %b %b %b %b    %0d     %b    %b",
                  $time, col, fil, pressed_col_out, pressed_row_out, pressed_valid,
                  numero, reset, save);
     end
 
-    // helper task
+    // tarea auxiliar
     task press_at_col(input integer row, input integer col_idx, input integer hold_cycles);
         reg [WIDTH-1:0] target;
         reg [WIDTH-1:0] target_row;
@@ -81,7 +81,7 @@ module sistema_de_lectura_tb;
     end
     endtask
 
-    // stimulus
+    // estímulo
     initial begin
         ack_read = 0;
         fil = {WIDTH{1'b0}};
@@ -110,13 +110,13 @@ module sistema_de_lectura_tb;
             ack_read = 1; @(posedge clk); ack_read = 0;
         end
 
-        // finish
+        // finalizar
         repeat (50) @(posedge clk);
         $display("Testbench finished at %0t", $time);
         $finish;
     end
 
-    // safety timeout (separate initial)
+    // timeout de seguridad (initial separado)
     initial begin
         #5000000;
         $display("TB: timeout at %0t", $time);

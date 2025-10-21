@@ -1,3 +1,17 @@
+IO_LOC  "seg[6]" 53;
+
+IO_LOC  "seg[5]" 54;
+
+IO_LOC  "seg[4]" 55;
+
+IO_LOC  "seg[3]" 56;
+
+IO_LOC  "seg[2]" 57;
+
+IO_LOC  "seg[1]" 68;
+
+IO_LOC  "seg[0]" 69;
+
 IO_LOC  "fil[3]" 77;
 
 IO_LOC  "fil[2]" 76;

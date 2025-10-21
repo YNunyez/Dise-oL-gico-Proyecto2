@@ -9,12 +9,10 @@ module Guardado_datos (
     output logic        rst_dat
 );
 
-    logic conteo; // 0 = espera primer guardar, 1 = espera segundo guardar
-    logic conteo1; //señal de rst dure 2 ciclos
+    logic conteo; // 0 = espera primer guardar, 1 = espera segundo para sumar
 
     initial begin
         conteo <= 0;
-        conteo1 <= 1;
         rst_dat <= 0;
         suma <= 0;
         numero_sv <= 0;

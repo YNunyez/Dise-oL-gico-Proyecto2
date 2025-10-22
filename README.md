@@ -65,4 +65,14 @@ De esta manera, se realiza una transición automática y controlada entre las fa
 Finalmente, el módulo display7 convierte cada valor de 4 bits en su patrón correspondiente de siete segmentos.
 
 4.  Diagramas de bloques de cada subsistema y su funcionamiento fundamental
+![Conexiones del módulo](/Imagenes/Bloques_push.png)
+![Conexiones del módulo](/Imagenes/Bloques_guardado.png)
+![Conexiones del módulo](/Imagenes/Bloques_suma.png)
+![Conexiones del módulo](/Imagenes/Bloques_lectordisplay7.png)
+![Conexiones del módulo](/Imagenes/Bloque_total.png)
+
+
+6. Ejemplo y análisis de una simulación funcional del sistema completo
+
+![Conexiones del módulo](/Imagenes/Test.png)
 

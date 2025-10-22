@@ -3,9 +3,9 @@ module top (
     input  logic        rst,
     input  logic        push,
     input  logic        guardar,
-    input  logic        finalizar,
     input  logic [3:0]  entrada,
-    output logic [6:0]  seg
+    output logic [6:0]  seg,
+    input  logic        fil
 );
 
     logic [3:0][3:0] numero;        
@@ -25,11 +25,9 @@ module top (
         //=======================================================
         sistema_de_lectura sistema_de_lectura (
             .clk      (clk),
-            .rst      (rst),
-            .push     (push),
-            .entrada  (entrada),
-            .rst_dat  (rst_dat),
-            .numero   (numero)
+            .ack_read (rst),
+            .fil      (fil),
+            .rst      (rst)
         );
 
 

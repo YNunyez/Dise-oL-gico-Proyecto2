@@ -11,8 +11,8 @@ module sistema_de_lectura #(
     output logic              pressed_valid,   // activa cuando hay una pulsación capturada disponible
     input  logic              ack_read,        // el consumidor pulsa esto para limpiar pressed_valid
     output integer                numero,
-    output logic              reset,
-    output logic              save
+    output logic              rst,
+    output logic              guardar
 );
 
     // barrido de columnas
@@ -50,8 +50,8 @@ module sistema_de_lectura #(
         pressed_row_out = '0;
         pressed_valid   = 1'b0;
         numero = 0;
-        reset = 1'b0;
-        save = 1'b0;
+        rst = 1'b0;
+        guardar = 1'b0;
     end
 
     always_ff @(posedge clk) begin
@@ -107,9 +107,9 @@ module sistema_de_lectura #(
     end
     
     always_ff @(posedge clk) begin
-        // Resetear banderas por defecto
-    //    reset <= 1'b0;
-    //    save <= 1'b0;
+        // rstear banderas por defecto
+    //    rst <= 1'b0;
+    //    guardar <= 1'b0;
         
         if (debounced_event) begin
             case({pressed_col_oh, pressed_row_oh})
@@ -125,9 +125,9 @@ module sistema_de_lectura #(
                 8'b0100_0010 : numero <= 8; // columna 1, fila 2 = 8
                 8'b0010_0010 : numero <= 9; // columna 2, fila 2 = 9
 
-                8'b1000_0001 : reset <= 1'b1; // columna 0, fila 3 = * 
+                8'b1000_0001 : rst <= 1'b1; // columna 0, fila 3 = * 
                 8'b0100_0001 : numero <= 0; // columna 1, fila 3 = 0
-                8'b0010_0001 : save <= 1'b1; // columna 2, fila 3 = # 
+                8'b0010_0001 : guardar <= 1'b1; // columna 2, fila 3 = # 
                 default      : begin
                     // No hay acción para combinaciones inválidas
                 end

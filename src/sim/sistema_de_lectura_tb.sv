@@ -20,8 +20,8 @@ module sistema_de_lectura_tb;
 
     // señales expuestas por el DUT
     wire integer    numero;
-    wire            reset;
-    wire            save;
+    wire            rst;
+    wire            guardar;
 
     // Instanciar DUT
     sistema_de_lectura #(
@@ -36,8 +36,8 @@ module sistema_de_lectura_tb;
         .pressed_valid(pressed_valid),
         .ack_read(ack_read),
         .numero(numero),
-        .reset(reset),
-        .save(save)
+        .rst(rst),
+        .guardar(guardar)
     );
 
     // reloj 50 MHz -> período 20 ns
@@ -50,14 +50,14 @@ module sistema_de_lectura_tb;
     initial begin
         $dumpfile("sistema_de_lectura_tb.vcd");
         $dumpvars(0, sistema_de_lectura_tb);
-        $display("TIME(ns)\tcol    fil    pcol   prow   valid   numero reset save");
+        $display("TIME(ns)\tcol    fil    pcol   prow   valid   numero rst guardar");
     end
 
     // imprimir registros y señales en cada flanco de reloj
     always @(posedge clk) begin
         $display("%0t\t%b %b %b %b %b    %0d     %b    %b",
                  $time, col, fil, pressed_col_out, pressed_row_out, pressed_valid,
-                 numero, reset, save);
+                 numero, rst, guardar);
     end
 
     // tarea auxiliar
@@ -95,8 +95,8 @@ module sistema_de_lectura_tb;
         press_at_col(2, 0, long_hold);
         repeat (50) @(posedge clk);
         if (pressed_valid) begin
-            $display("TB: latched -> pcol=%b prow=%b numero=%0d reset=%b save=%b at %0t",
-                     pressed_col_out, pressed_row_out, numero, reset, save, $time);
+            $display("TB: latched -> pcol=%b prow=%b numero=%0d rst=%b guardar=%b at %0t",
+                     pressed_col_out, pressed_row_out, numero, rst, guardar, $time);
             ack_read = 1;
             @(posedge clk);
             ack_read = 0;
@@ -105,8 +105,8 @@ module sistema_de_lectura_tb;
         press_at_col(0, 0, medium_hold);
         repeat (50) @(posedge clk);
         if (pressed_valid) begin
-            $display("TB: latched -> pcol=%b prow=%b numero=%0d reset=%b save=%b at %0t",
-                     pressed_col_out, pressed_row_out, numero, reset, save, $time);
+            $display("TB: latched -> pcol=%b prow=%b numero=%0d rst=%b guardar=%b at %0t",
+                     pressed_col_out, pressed_row_out, numero, rst, guardar, $time);
             ack_read = 1; @(posedge clk); ack_read = 0;
         end
 

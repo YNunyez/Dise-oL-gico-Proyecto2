@@ -21,6 +21,19 @@ module top (
     logic ent;             
 
     //=======================================================
+        // Instancia: Push_datos
+        //=======================================================
+        sistema_de_lectura sistema_de_lectura (
+            .clk      (clk),
+            .rst      (rst),
+            .push     (push),
+            .entrada  (entrada),
+            .rst_dat  (rst_dat),
+            .numero   (numero)
+        );
+
+
+    //=======================================================
     // Instancia: Push_datos
     //=======================================================
     Push_datos Push_datos (

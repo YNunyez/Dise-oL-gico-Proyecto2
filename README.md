@@ -63,3 +63,6 @@ Cuando ent = 0, el multiplexor envia los números que el usuario está ingresand
 
 De esta manera, se realiza una transición automática y controlada entre las fases de entrada y salida del sistema. Posteriormente, el módulo mux_numeros toma los cuatro dígitos activos de s_mux y los barre secuencialmente a alta velocidad. Esto permite que los cuatro displays compartan las mismas líneas de segmentos, activándose uno a la vez mediante una rotación controlada por un contador de dos bits.
 Finalmente, el módulo display7 convierte cada valor de 4 bits en su patrón correspondiente de siete segmentos.
+
+4.  Diagramas de bloques de cada subsistema y su funcionamiento fundamental
+

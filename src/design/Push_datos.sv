@@ -24,8 +24,7 @@ module Push_datos (
             for (i = 0; i < 3; i = i + 1)
                 celdas[i] <= 0;
         end
-        else if (push && conteo < 3) begin
-            // desplazamiento en serie rápido
+        else if (push && conteo < 3) begin // desplazamiento de dato
             for (i = 2; i > 0; i = i - 1)
                 celdas[i] <= celdas[i-1];
             celdas[0] <= entrada;
@@ -39,4 +38,3 @@ module Push_datos (
     assign numero[2] = celdas[2];
 
 endmodule
-

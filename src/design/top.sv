@@ -1,23 +1,36 @@
 module top (
     input  logic        clk,
-    input  logic        rst,
-    input  logic        push,
-    input  logic        guardar,
-    input  logic [3:0]  entrada,
-    output logic [6:0]  seg
+    output logic [6:0]  seg,
+    input  logic [3:0]   fil
 );
 
     logic [3:0][3:0] numero;        
     logic [3:0][3:0] numero_sv;     
     logic [3:0][3:0] resultado;     
     logic [3:0][3:0] s_mux;         
-    logic [3:0]      s_muxfue;      
+    logic [3:0]      s_muxfue;    
+    logic [3:0]      entrada;
 
+    logic rst;
+    logic guardar;
     logic suma;                  
     logic rst_sv_g;            
     logic rst_sv_s;           
     logic rst_s;           
-    logic ent;             
+    logic ent;  
+    logic push;           
+
+    //=======================================================
+    // Instancia: sistema_de_lectura
+    //=======================================================
+    sistema_de_lectura sistema_de_lectura (
+        .clk      (clk),
+        .reset    (rst),
+        .fil      (fil),
+        .ack_read (rst_dat),
+        .numero   (entrada),
+        .save     (guardar)
+    );
 
     //=======================================================
     // Instancia: Push_datos

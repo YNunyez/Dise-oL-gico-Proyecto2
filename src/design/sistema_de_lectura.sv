@@ -10,9 +10,10 @@ module sistema_de_lectura #(
     output logic [WIDTH-1:0]  pressed_row_out, // salida one-hot de la última fila aceptada
     output logic              pressed_valid,   // activa cuando hay una pulsación capturada disponible
     input  logic              ack_read,        // el consumidor pulsa esto para limpiar pressed_valid
-    output integer            numero,
+    output logic [3:0]        numero,
     output logic              reset,
-    output logic              save
+    output logic              save,
+    output logic              push
 );
 
     // barrido de columnas
@@ -53,7 +54,7 @@ module sistema_de_lectura #(
         reset = 1'b0;
         save = 1'b0;
     end
-
+    assign push = debounced_event;
     always_ff @(posedge clk) begin
         debounced_event <= 1'b0;
 
@@ -113,17 +114,17 @@ module sistema_de_lectura #(
         
         if (debounced_event) begin
             case({pressed_col_oh, pressed_row_oh})
-                8'b1000_1000 : numero <= 1; // columna 0, fila 0 = 1
-                8'b0100_1000 : numero <= 2; // columna 1, fila 0 = 2
-                8'b0010_1000 : numero <= 3; // columna 2, fila 0 = 3
+                8'b1000_1000 : numero <= 4'b0001; // columna 0, fila 0 = 1
+                8'b0100_1000 : numero <= 4'b0010; // columna 1, fila 0 = 2
+                8'b0010_1000 : numero <= 4'b0011; // columna 2, fila 0 = 3
 
-                8'b1000_0100 : numero <= 4; // columna 0, fila 1 = 4
-                8'b0100_0100 : numero <= 5; // columna 1, fila 1 = 5
-                8'b0010_0100 : numero <= 6; // columna 2, fila 1 = 6
+                8'b1000_0100 : numero <= 4'b0100; // columna 0, fila 1 = 4
+                8'b0100_0100 : numero <= 4'b0101; // columna 1, fila 1 = 5
+                8'b0010_0100 : numero <= 4'b0110; // columna 2, fila 1 = 6
 
-                8'b1000_0010 : numero <= 7; // columna 0, fila 2 = 7
-                8'b0100_0010 : numero <= 8; // columna 1, fila 2 = 8
-                8'b0010_0010 : numero <= 9; // columna 2, fila 2 = 9
+                8'b1000_0010 : numero <= 4'b0111; // columna 0, fila 2 = 7
+                8'b0100_0010 : numero <= 4'b1000; // columna 1, fila 2 = 8
+                8'b0010_0010 : numero <= 4'b1001; // columna 2, fila 2 = 9
 
                 8'b1000_0001 : reset <= 1'b1; // columna 0, fila 3 = * 
                 8'b0100_0001 : numero <= 0; // columna 1, fila 3 = 0

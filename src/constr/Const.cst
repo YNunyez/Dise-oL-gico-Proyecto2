@@ -1,89 +1,45 @@
-IO_LOC  "e_mux[1]" 69;
-IO_PORT "e_mux[1]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "cat[0]" 56;
 
-IO_LOC  "e_mux[0]" 68;
-IO_PORT "e_mux[0]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "cat[1]" 55;
 
-IO_LOC  "dato_entrada[3]" 25;
-IO_PORT "dato_entrada[3]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "cat[2]" 54;
 
-IO_LOC  "dato_entrada[2]" 26;
-IO_PORT "dato_entrada[2]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "cat[3]" 53;
 
-IO_LOC  "dato_entrada[1]" 27;
-IO_PORT "dato_entrada[1]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "seg[0]" 49;
 
-IO_LOC  "dato_entrada[0]" 28;
-IO_PORT "dato_entrada[0]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "seg[1]" 48;
 
-IO_LOC  "dato_error[7]" 29;
-IO_PORT "dato_error[7]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "seg[2]" 68;
 
-IO_LOC  "dato_error[6]" 30;
-IO_PORT "dato_error[6]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "seg[3]" 57;
 
-IO_LOC  "dato_error[5]" 33;
-IO_PORT "dato_error[5]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "seg[4]" 69;
 
-IO_LOC  "dato_error[4]" 34;
-IO_PORT "dato_error[4]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "seg[5]" 31;
 
-IO_LOC  "dato_error[3]" 40;
-IO_PORT "dato_error[3]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "seg[6]" 32;
 
-IO_LOC  "dato_error[2]" 35;
-IO_PORT "dato_error[2]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "col[0]" 28;
+IO_PORT "col[0]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
 
-IO_LOC  "dato_error[1]" 41;
-IO_PORT "dato_error[1]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "col[1]" 29;
+IO_PORT "col[1]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
 
-IO_LOC  "dato_error[0]" 42;
-IO_PORT "dato_error[0]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "col[2]" 30;
+IO_PORT "col[2]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
 
-IO_LOC  "led[6]" 49;
-IO_PORT "led[6]" DRIVE=8 IO_TYPE=LVCMOS33;
+IO_LOC  "col[3]" 33;
+IO_PORT "col[3]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
 
-IO_LOC  "led[7]" 48;
-IO_PORT "led[7]" DRIVE=8 IO_TYPE=LVCMOS33;
+IO_LOC  "fil[0]" 34;
+IO_PORT "fil[0]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
 
-IO_LOC  "ded" 70;
-IO_PORT "ded" IO_TYPE=LVCMOS33;
+IO_LOC  "fil[1]" 40;
+IO_PORT "fil[1]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
 
-IO_LOC  "seg[2]" 71;
-IO_PORT "seg[2]" IO_TYPE=LVCMOS33;
+IO_LOC  "fil[2]" 35;
+IO_PORT "fil[2]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
 
-IO_LOC  "seg[5]" 72;
-IO_PORT "seg[5]" IO_TYPE=LVCMOS33;
-
-IO_LOC  "seg[4]" 73;
-IO_PORT "seg[4]" IO_TYPE=LVCMOS33;
-
-IO_LOC  "seg[3]" 74;
-IO_PORT "seg[3]" IO_TYPE=LVCMOS33;
-
-IO_LOC  "seg[6]" 75;
-IO_PORT "seg[6]" IO_TYPE=LVCMOS33;
-
-IO_LOC  "seg[1]" 76;
-IO_PORT "seg[1]" IO_TYPE=LVCMOS33;
-
-IO_LOC  "seg[0]" 77;
-IO_PORT "seg[0]" IO_TYPE=LVCMOS33;
-
-IO_LOC  "led[0]" 10;
-IO_PORT "led[0]" DRIVE=8 IO_TYPE=LVCMOS18;
-
-IO_LOC  "led[1]" 11;
-IO_PORT "led[1]" DRIVE=8 IO_TYPE=LVCMOS18;
-
-IO_LOC  "led[2]" 13;
-IO_PORT "led[2]" DRIVE=8 IO_TYPE=LVCMOS18;
-
-IO_LOC  "led[3]" 14;
-IO_PORT "led[3]" DRIVE=8 IO_TYPE=LVCMOS18;
-
-IO_LOC  "led[4]" 15;
-IO_PORT "led[4]" DRIVE=8 IO_TYPE=LVCMOS18;
-
-IO_LOC  "led[5]" 16;
-IO_PORT "led[5]" DRIVE=8 IO_TYPE=LVCMOS18;
+IO_LOC  "fil[3]" 41;
+IO_PORT "fil[3]" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;

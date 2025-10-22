@@ -76,3 +76,5 @@ Finalmente, el módulo display7 convierte cada valor de 4 bits en su patrón cor
 
 ![Conexiones del módulo](/Imagenes/Test.png)
 
+Como se puede observar en un t=0 el sistema inicializa todas las variables en un valor 0, esperando un estimulo de salida desde el bloque de lectura, una vez obtenido el dato realiza el push del dato a la variable numero hasta tener 3 valores en este, una vez con los tres valores se recibe una señal de guardado. Con esa señal se hace una copia de la variable número en numero_sv, este una vez realizado el respaldo envía una señal rst_dat que realiza un reset en la variable número, para nuevamente esperar el ingreso de 3 números para realizar la suma, una vez se realiza un segundo guardado el sistema sabe que los datos están listos para la suma, una vez la suma esta lista se muestra su valor en los display.
+

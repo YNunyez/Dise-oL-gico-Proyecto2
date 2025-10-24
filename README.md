@@ -90,16 +90,21 @@ El latch o cerrojo Set-Reset es un circuito secuencial que controla una variable
 ![Latch SR](/Imagenes/RS-with-NAND-gates-2.jpg)
 
 ![Latch SR](/Imagenes/SR00.jpg)
+
 S=0 R=0 Q=1 QN=0 (estado anterior Q=1 QN=0) 
 
 ![Latch SR](/Imagenes/SR01.jpg)
+
 S=0 R=1 Q=0 QN=1
 
 ![Latch SR](/Imagenes/SR10.jpg)
+
 S=1 R=0 Q=1 QN=0
 
 ![Latch SR](/Imagenes/SR11.jpg)
+
 S=1 R=1, Q y QN indefinidos
 
 ![Latch SR](/Imagenes/SR00_2.jpg)
+
 S=0 R=0 Q=0 QN=1 (estado anterior Q=0 QN=1) 

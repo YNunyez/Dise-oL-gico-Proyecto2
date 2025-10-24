@@ -87,7 +87,7 @@ Como se puede observar en un t=0 el sistema inicializa todas las variables en un
 
 Construcción de un cerrojo Set-Reset con compuertas NAND
 El latch o cerrojo Set-Reset es un circuito secuencial que controla una variable Q en base a dos entradas S y R, se puede hacer con compuertas NOR o NAND, para este experimento se usaron compuertas NAND. Se armó el circuito de la figura para comprobar que funciona , o sea que sus entradas y salidas coincidan con la tabla de verdad. Con un analizador lógico se hacen las mediciones y se comprueba que el circuito de cerrojo SR funciona correctamente. En las figuras, D0, D1, D6 y D7 representan S, R, Q y Q' respectivamente. 
-![Latch SR](/Imagenes/RS-with-NAND-gates-2.jpg)
+![Latch SR](/Imagenes/RS-with-NAND-gates-2.png)
 
 ![Latch SR](/Imagenes/SR00.jpg)
 

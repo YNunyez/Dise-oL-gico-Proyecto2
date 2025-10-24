@@ -44,6 +44,8 @@ Susistema 1: Lectura del teclado
 Este es el primer módulo del circuito, se encarga de captar cual columna y fila han sido presionadas.Cada tecla es un botón que conecta una fila con una columna (para un teclado 4x4 son 16 combinaciones). Como cada vez que se presiona el botón quedan conectadas, se usa el módulo barrido para hacer un desplazamiento de un código one-hot a través de las columnas a la frecuencia de 27MHz que provee la FPGA, de esta manera se puede conocer la fila y columna del botón pues solo esa fila mostrará un 1 cada vez que el barrido de columnas pase por su columna. Se usa la variable vectorial col para estimular el barrido del one-hot através de las columnas y fil para representar el valor de las filas en cada momento.
 El módulo de debounce soluciona un problema en la implementación del circuito, los 'rebotes' de los contactos metálicos del teclado al presionar un botón. El módulo actúa con un contador interno que requiere de un número mínimo de mediciones de 1 o 0 en la fila presionada hasta establecer el valor como 1 o 0, se usa porque una señal inestable puede generar problemas para identificar bien el valor a la hora de medirla.Las variable fil entra a este módulo para que se le aplique el debounce.
 Cuando se detecta un valor de col y fil (ya pasado por debounce) se le asigna un valor a la variable integer numero, de manera que sea igual al número que representa ese botón.
+![Lectura](/Imagenes/sistema_de_lectura_2.png)
+
 
 Subsistema 2: Captura y almacenamiento de datos
 
@@ -83,6 +85,21 @@ Finalmente, el módulo display7 convierte cada valor de 4 bits en su patrón cor
 
 Como se puede observar en un t=0 el sistema inicializa todas las variables en un valor 0, esperando un estimulo de salida desde el bloque de lectura, una vez obtenido el dato realiza el push del dato a la variable numero hasta tener 3 valores en este, una vez con los tres valores se recibe una señal de guardado. Con esa señal se hace una copia de la variable número en numero_sv, este una vez realizado el respaldo envía una señal rst_dat que realiza un reset en la variable número, para nuevamente esperar el ingreso de 3 números para realizar la suma, una vez se realiza un segundo guardado el sistema sabe que los datos están listos para la suma, una vez la suma esta lista se muestra su valor en los display.
 
-- Construcción de un cerrojo Set-Reset con compuertas NAND
+Construcción de un cerrojo Set-Reset con compuertas NAND
 El latch o cerrojo Set-Reset es un circuito secuencial que controla una variable Q en base a dos entradas S y R, se puede hacer con compuertas NOR o NAND, para este experimento se usaron compuertas NAND. Se armó el circuito de la figura para comprobar que funciona , o sea que sus entradas y salidas coincidan con la tabla de verdad. Con un analizador lógico se hacen las mediciones y se comprueba que el circuito de cerrojo SR funciona correctamente. En las figuras, D0, D1, D6 y D7 representan S, R, Q y Q' respectivamente. 
-![Conexiones del módulo](/Imagenes/4.2.png)
+![Latch SR](/Imagenes/RS-with-NAND-gates-2.png)
+
+![Latch SR](/Imagenes/SR00.png)
+S=0 R=0 Q=1 QN=0 (estado anterior Q=1 QN=0) 
+
+![Latch SR](/Imagenes/SR01.png)
+S=0 R=1 Q=0 QN=1
+
+![Latch SR](/Imagenes/SR10.png)
+S=1 R=0 Q=1 QN=0
+
+![Latch SR](/Imagenes/SR11.png)
+S=1 R=1, Q y QN indefinidos
+
+![Latch SR](/Imagenes/SR00_2.png)
+S=0 R=0 Q=0 QN=1 (estado anterior Q=0 QN=1) 

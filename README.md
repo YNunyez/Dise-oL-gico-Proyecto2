@@ -85,7 +85,7 @@ Finalmente, el módulo display7 convierte cada valor de 4 bits en su patrón cor
 
 Como se puede observar en un t=0 el sistema inicializa todas las variables en un valor 0, esperando un estimulo de salida desde el bloque de lectura, una vez obtenido el dato realiza el push del dato a la variable numero hasta tener 3 valores en este, una vez con los tres valores se recibe una señal de guardado. Con esa señal se hace una copia de la variable número en numero_sv, este una vez realizado el respaldo envía una señal rst_dat que realiza un reset en la variable número, para nuevamente esperar el ingreso de 3 números para realizar la suma, una vez se realiza un segundo guardado el sistema sabe que los datos están listos para la suma, una vez la suma esta lista se muestra su valor en los display.
 
-Construcción de un cerrojo Set-Reset con compuertas NAND
+##Construcción de un cerrojo Set-Reset con compuertas NAND
 El latch o cerrojo Set-Reset es un circuito secuencial que controla una variable Q en base a dos entradas S y R, se puede hacer con compuertas NOR o NAND, para este experimento se usaron compuertas NAND. Se armó el circuito de la figura para comprobar que funciona , o sea que sus entradas y salidas coincidan con la tabla de verdad. Con un analizador lógico se hacen las mediciones y se comprueba que el circuito de cerrojo SR funciona correctamente. En las figuras, D0, D1, D6 y D7 representan S, R, Q y Q' respectivamente. 
 
 ![Latch SR](/Imagenes/RS-with-NAND-gates-2.png)

@@ -14,7 +14,7 @@ El problema a solucionar es la implementación de un sistema digital que, por me
 
    D.	Subsistema de despliegue: convierte el resultado y lo presenta en cuatro displays de siete segmentos mediante un mecanismo de refresco temporal.
 
-Objetivos buscados:
+### Objetivos buscados:
 
    •	Implementar un diseño completamente sincrónico en FPGA utilizando SystemVerilog.
 
@@ -22,7 +22,7 @@ Objetivos buscados:
 
    •	Verificar funcional y temporalmente el diseño.
 
-Especificaciones principales:
+### Especificaciones principales:
 
    •	Frecuencia de reloj: 27 MHz (única fuente de reloj del sistema).
 

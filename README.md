@@ -35,11 +35,11 @@ Especificaciones principales:
 
 ## 3. Descripción general del funcionamiento del circuito completo y de cada subsistema
 
-# Descripción general
+### Descripción general
 
 El circuito consta de módulos que operan de forma secuencial bajo control sincrónico. Primero, los dígitos ingresados por (explicación del módulo Yair), que luego pasa al módulo de almacenamiento temporal (Push_datos). Estos valores luego se almacenan en registros internos controlados por el módulo de guardado (Guardado_datos). Una vez almacenados los dos operandos, el módulo Suma_datos realiza la operación de suma decimal y genera una salida de cuatro dígitos en formato BCD. Luego, el resultado se envía al módulo mux_info, que elige si los datos a mostrar corresponden al número ingresado actualmente o al resultado final de la operación. A su vez, los datos fluyen hacia el módulo mux_numeros, que se encarga de multiplexar secuencialmente cada uno de los cuatro dígitos disponibles para finalmente ser decodificados por display7, que convierte el valor binario en la combinación adecuada de segmentos para visualizaciones de ánodos comunes.
 
-# Susistema 1: Lectura del teclado
+### Susistema 1: Lectura del teclado
 
 Este es el primer módulo del circuito, se encarga de captar cual columna y fila han sido presionadas.Cada tecla es un botón que conecta una fila con una columna (para un teclado 4x4 son 16 combinaciones). Como cada vez que se presiona el botón quedan conectadas, se usa el módulo barrido para hacer un desplazamiento de un código one-hot a través de las columnas a la frecuencia de 27MHz que provee la FPGA, de esta manera se puede conocer la fila y columna del botón pues solo esa fila mostrará un 1 cada vez que el barrido de columnas pase por su columna. Se usa la variable vectorial col para estimular el barrido del one-hot através de las columnas y fil para representar el valor de las filas en cada momento.
 El módulo de debounce soluciona un problema en la implementación del circuito, los 'rebotes' de los contactos metálicos del teclado al presionar un botón. El módulo actúa con un contador interno que requiere de un número mínimo de mediciones de 1 o 0 en la fila presionada hasta establecer el valor como 1 o 0, se usa porque una señal inestable puede generar problemas para identificar bien el valor a la hora de medirla.Las variable fil entra a este módulo para que se le aplique el debounce.
@@ -48,7 +48,7 @@ Cuando se detecta un valor de col y fil (ya pasado por debounce) se le asigna un
 ![Lectura](/Imagenes/sistema_de_lectura_2.png)
 
 
-Subsistema 2: Captura y almacenamiento de datos
+### Subsistema 2: Captura y almacenamiento de datos
 
 El módulo “push_datos”, implementa un registro de desplazamiento controlado por una señal "push" desde el teclado. Cada flanco positivo del reloj con push = 1 (extraído de una señal del teclado) ingresa un nuevo dígito en el registro, empujando los valores anteriores a una posición más significativa. El módulo limita la entrada a tres dígitos y su número de salida representa los tres dígitos registrados junto con un cuarto dígito fijado en cero que se reserva para operaciones posteriores.
 
@@ -56,7 +56,7 @@ El módulo Guardado_datos recibe los datos del Push_datos y controla cuándo deb
 Además, permite distinguir entre el primer y segundo número ingresado, y genera las señales necesarias (guardar, suma, rst_sv) para coordinar el proceso con el módulo aritmético.
 
 
-Subsistema 3: Suma aritmética
+### Subsistema 3: Suma aritmética
 
 El módulo Suma_datos se encarga de realizar la suma decimal entre los dos números almacenados. Opera dígito por dígito utilizando un acarreo interno que se propaga entre los cuatro nibbles, ajustando el resultado para valores mayores o iguales a 10 (corrigiendo a formato BCD).
 

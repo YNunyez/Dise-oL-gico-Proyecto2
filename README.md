@@ -64,7 +64,7 @@ Al completarse la operación, activa la señal ent para indicar que el resultado
 Este bloque garantiza que la operación aritmética sea completamente sincrónica y libre de condiciones de carrera, ya que todas las operaciones se actualizan únicamente en los flancos positivos del reloj principal.
 
 
-Subsistema 4: Despliegue de resultados
+### Subsistema 4: Despliegue de resultados
 
 El módulo mux_info actúa como un multiplexor de selección de fuente.
 Cuando ent = 0, el multiplexor envia los números que el usuario está ingresando. Cuando ent = 1, el multiplexor muestra el resultado de la suma contenido en resultado.
@@ -72,7 +72,7 @@ Cuando ent = 0, el multiplexor envia los números que el usuario está ingresand
 De esta manera, se realiza una transición automática y controlada entre las fases de entrada y salida del sistema. Posteriormente, el módulo mux_numeros toma los cuatro dígitos activos de s_mux y los barre secuencialmente a alta velocidad. Esto permite que los cuatro displays compartan las mismas líneas de segmentos, activándose uno a la vez mediante una rotación controlada por un contador de dos bits.
 Finalmente, el módulo display7 convierte cada valor de 4 bits en su patrón correspondiente de siete segmentos.
 
-4.  Diagramas de bloques de cada subsistema y su funcionamiento fundamental
+## 4.  Diagramas de bloques de cada subsistema y su funcionamiento fundamental
 ![Conexiones del módulo](/Imagenes/Bloques_push.png)
 ![Conexiones del módulo](/Imagenes/Bloques_guardado.png)
 ![Conexiones del módulo](/Imagenes/Bloques_suma.png)
@@ -80,7 +80,7 @@ Finalmente, el módulo display7 convierte cada valor de 4 bits en su patrón cor
 ![Conexiones del módulo](/Imagenes/Bloque_total.png)
 
 
-6. Ejemplo y análisis de una simulación funcional del sistema completo
+## 5. Ejemplo y análisis de una simulación funcional del sistema completo
 
 ![Conexiones del módulo](/Imagenes/Test.png)
 

@@ -22,8 +22,13 @@
  Yosys 0.26+1 (git sha1 b1a011138, x86_64-w64-mingw32-g++ 9.2.1 -Os)
 
 
--- Running command `read_verilog -sv ../design/Codificador.sv ../design/Correccion_de_error.sv ../design/Decodificador.sv ../design/display7.sv ../design/mux.sv ../design/mux_fuente.sv ../design/top.sv ; synth_gowin -top top    -json hamming.json' --
+-- Running command `read_verilog -sv ../design/display7.sv ../design/Guardado_datos.sv ../design/mux_info.sv ../design/mux_numeros.sv ../design/Prueba.sv ../design/Push_datos.sv ../design/sistema_de_lectura.sv ../design/Suma_datos.sv ../design/top.sv ; synth_gowin -top top    -json hamming.json' --
 
-1. Executing Verilog-2005 frontend: ../design/Codificador.sv
-../design/Codificador.sv:7: ERROR: syntax error, unexpected '[', expecting TOK_ID
-Parsing SystemVerilog input from `../design/Codificador.sv' to AST representation.
+1. Executing Verilog-2005 frontend: ../design/display7.sv
+Parsing SystemVerilog input from `../design/display7.sv' to AST representation.
+Generating RTLIL representation for module `\display7'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: ../design/Guardado_datos.sv
+../design/Guardado_datos.sv:4: ERROR: syntax error, unexpected '[', expecting TOK_ID
+Parsing SystemVerilog input from `../design/Guardado_datos.sv' to AST representation.

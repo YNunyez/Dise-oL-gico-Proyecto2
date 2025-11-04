@@ -23,6 +23,6 @@ module display7 (
             4'd15: seg = 7'b1110001;
             default: seg = 7'b0000000; // Off for invalid input
         endcase
-        seg=(~seg); // Invertir para display de ánodo común
+        //seg=(~seg); // Invertir para display de ánodo común
     end
 endmodule
